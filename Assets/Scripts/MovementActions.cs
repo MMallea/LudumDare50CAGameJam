@@ -62,6 +62,15 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Accelerate"",
+                    ""type"": ""Button"",
+                    ""id"": ""709f3415-798a-40a0-b0e9-9b7c0467c6c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
                     ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8747d547-8226-4ea7-94b9-6036e08effce"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
         m_Keyboard_Right = m_Keyboard.FindAction("Right", throwIfNotFound: true);
         m_Keyboard_Front = m_Keyboard.FindAction("Front", throwIfNotFound: true);
         m_Keyboard_Back = m_Keyboard.FindAction("Back", throwIfNotFound: true);
+        m_Keyboard_Accelerate = m_Keyboard.FindAction("Accelerate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +204,7 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Right;
     private readonly InputAction m_Keyboard_Front;
     private readonly InputAction m_Keyboard_Back;
+    private readonly InputAction m_Keyboard_Accelerate;
     public struct KeyboardActions
     {
         private @MovementActions m_Wrapper;
@@ -191,6 +213,7 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
         public InputAction @Right => m_Wrapper.m_Keyboard_Right;
         public InputAction @Front => m_Wrapper.m_Keyboard_Front;
         public InputAction @Back => m_Wrapper.m_Keyboard_Back;
+        public InputAction @Accelerate => m_Wrapper.m_Keyboard_Accelerate;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
                 @Back.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnBack;
                 @Back.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnBack;
                 @Back.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnBack;
+                @Accelerate.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnAccelerate;
+                @Accelerate.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnAccelerate;
+                @Accelerate.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnAccelerate;
             }
             m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +254,9 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
                 @Back.started += instance.OnBack;
                 @Back.performed += instance.OnBack;
                 @Back.canceled += instance.OnBack;
+                @Accelerate.started += instance.OnAccelerate;
+                @Accelerate.performed += instance.OnAccelerate;
+                @Accelerate.canceled += instance.OnAccelerate;
             }
         }
     }
@@ -238,5 +267,6 @@ public partial class @MovementActions : IInputActionCollection2, IDisposable
         void OnRight(InputAction.CallbackContext context);
         void OnFront(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
     }
 }

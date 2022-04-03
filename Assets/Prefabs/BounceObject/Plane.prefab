@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionType: 0
   destroyOnImpact: 1
-  upForce: 100
+  upForce: 500
   collisionSFX: {fileID: 0}
   collisionEffectPrefab: {fileID: 1892078723244562, guid: 35f240381b6cc4645a31cfdb303a9646,
     type: 3}

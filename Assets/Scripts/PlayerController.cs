@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public Animator playerAnim;
     private MovementActions movement;
-    private bool front, back, left, right;
+    private bool front, back, left, right, space;
     private void Awake()
     {
         front = false;
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
         movement.Keyboard.Front.canceled += context => { front = false; };
         movement.Keyboard.Back.started += context => { back = true; };
         movement.Keyboard.Back.canceled += context => { back = false; };
+        movement.Keyboard.Accelerate.started += context => { space = true; };
+        movement.Keyboard.Accelerate.canceled += context => { space = false; };
     }
 
     private void OnEnable()
@@ -54,10 +56,16 @@ public class PlayerController : MonoBehaviour
             transform.position += Vector3.back * Time.deltaTime * moveSpeed;
         }
 
-        if(playerAnim != null)
+        if (space)
+        {
+            transform.position += Vector3.down * Time.deltaTime * (moveSpeed * 2);
+        }
+
+        if (playerAnim != null)
         {
             playerAnim.SetBool("Left", left);
             playerAnim.SetBool("Right", right);
+            playerAnim.SetBool("Dive", space);
         }
     }
 }
