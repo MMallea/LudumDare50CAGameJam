@@ -115,7 +115,7 @@ MonoBehaviour:
   destroyOnImpact: 1
   upForce: 100
   collisionSFX: {fileID: 0}
-  collisionEffectPrefab: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+  collisionEffectPrefab: {fileID: 1892078723244562, guid: 35f240381b6cc4645a31cfdb303a9646,
     type: 3}
 --- !u!54 &1195869730713245455
 Rigidbody:

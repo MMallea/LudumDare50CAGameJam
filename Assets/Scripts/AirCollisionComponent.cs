@@ -55,8 +55,16 @@ public class AirCollisionComponent : MonoBehaviour
 
             if(destroyOnImpact)
             {
-                Destroy(gameObject);
+                destroyOnImpact = false;
+                StartCoroutine(DestroyObject());
             }
         }
+    }
+
+    private IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Destroy(gameObject);
     }
 }

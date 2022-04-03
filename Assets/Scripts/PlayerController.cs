@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    public Animator playerAnim;
     private MovementActions movement;
     private bool front, back, left, right;
     private void Awake()
@@ -51,6 +52,12 @@ public class PlayerController : MonoBehaviour
         if (back)
         {
             transform.position += Vector3.back * Time.deltaTime * moveSpeed;
+        }
+
+        if(playerAnim != null)
+        {
+            playerAnim.SetBool("Left", left);
+            playerAnim.SetBool("Right", right);
         }
     }
 }
