@@ -41,10 +41,10 @@ public class UIManager : MonoBehaviour
             timerText.text = DisplayTimeMinSecMil(DummyGameManager.Instance.GetTimer());
 
         //Move player image pos closer to ground
-        float playerToGroundPerc = player;
-        float newPlayerPosY = playerPosImgStartY + ((playerPosImgStartY - altGroundPosImage.transform.position.y) * playerToGroundPerc);
+        //float playerToGroundPerc = player;
+        //float newPlayerPosY = playerPosImgStartY + ((playerPosImgStartY - altGroundPosImage.transform.position.y) * playerToGroundPerc);
 
-        altPlayerPosImage.transform.position = new Vector3(altPlayerPosImage.transform.position.x, newPlayerPosY, altPlayerPosImage.transform.position.z);
+        //altPlayerPosImage.transform.position = new Vector3(altPlayerPosImage.transform.position.x, newPlayerPosY, altPlayerPosImage.transform.position.z);
     }
 
     public string DisplayTimeMinSecMil(float time)
