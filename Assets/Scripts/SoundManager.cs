@@ -19,8 +19,17 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public AudioClip ahhh;
+    public AudioClip scream;
+    public AudioClip ouch;
+    public AudioClip groundHit;
+    public AudioClip startGame;
+    public AudioClip altBeep;
+    public AudioClip menuClick;
+
     public AudioSource sfxSource;
     public AudioSource musicSource;
+    public AudioSource windSource;
 
     public void PlayMusic(AudioClip clip, bool loop)
     {

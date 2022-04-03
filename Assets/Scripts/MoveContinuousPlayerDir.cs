@@ -17,5 +17,11 @@ public class MoveContinuousPlayerDir : MoveContinuous
             if (Mathf.Sign(player.transform.position.z - transform.position.z) != Mathf.Sign(velocity.z))
                 velocity.z *= -1;
         }
+
+        if (modelFaceTowardsDir)
+        {
+            Quaternion rotation = Quaternion.LookRotation(velocity, Vector3.up);
+            modelObj.transform.rotation = rotation;
+        }
     }
 }

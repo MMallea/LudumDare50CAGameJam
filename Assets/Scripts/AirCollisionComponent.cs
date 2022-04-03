@@ -10,6 +10,8 @@ public class AirCollisionComponent : MonoBehaviour
     public bool destroyOnImpact;
     public int upForce = 1000;
     public AudioClip collisionSFX;
+    public Animator anim;
+    public bool scaleCollisionEffectWithObj;
     public GameObject collisionEffectPrefab;
     private GameObject collisionEffectObj;
 
@@ -46,7 +48,9 @@ public class AirCollisionComponent : MonoBehaviour
             }
             else
             {
-                Debug.Log(collisionEffectObj);
+                if(scaleCollisionEffectWithObj)
+                    collisionEffectObj.transform.localScale = transform.localScale;
+
                 foreach(ParticleSystem particle in collisionEffectObj.GetComponentsInChildren<ParticleSystem>())
                 {
                     particle.Play();
@@ -56,14 +60,23 @@ public class AirCollisionComponent : MonoBehaviour
             if(destroyOnImpact)
             {
                 destroyOnImpact = false;
-                StartCoroutine(DestroyObject());
+                StartCoroutine(Despawn());
             }
         }
     }
 
-    private IEnumerator DestroyObject()
+    private IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(0.1f);
+        float delay = 0.1f;
+        if(anim != null)
+        {
+            anim.SetTrigger("Hit");
+            yield return null;
+            yield return null;
+            delay = anim.GetCurrentAnimatorStateInfo(0).length;
+        }
+
+        yield return new WaitForSeconds(delay);
 
         Destroy(gameObject);
     }

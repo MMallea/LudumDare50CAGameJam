@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public Animator playerAnim;
+
+    private float speedMultiplier = 1;
     private MovementActions movement;
     private bool front, back, left, right, space;
     private void Awake()
@@ -38,22 +40,22 @@ public class PlayerController : MonoBehaviour
     {
         if (left)
         {
-            transform.position += Vector3.left * Time.deltaTime * moveSpeed;
+            transform.position += Vector3.left * Time.deltaTime * moveSpeed * speedMultiplier;
         }
 
         if (right)
         {
-            transform.position += Vector3.right * Time.deltaTime * moveSpeed;
+            transform.position += Vector3.right * Time.deltaTime * moveSpeed * speedMultiplier;
         }
 
         if (front)
         {
-            transform.position += Vector3.forward * Time.deltaTime * moveSpeed;
+            transform.position += Vector3.forward * Time.deltaTime * moveSpeed * speedMultiplier;
         }
 
         if (back)
         {
-            transform.position += Vector3.back * Time.deltaTime * moveSpeed;
+            transform.position += Vector3.back * Time.deltaTime * moveSpeed * speedMultiplier;
         }
 
         if (space)
@@ -67,5 +69,9 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetBool("Right", right);
             playerAnim.SetBool("Dive", space);
         }
+
+        speedMultiplier = space ? 0.5f : 1;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.windSource.volume = space ? 0.5f : 0.25f;
     }
 }

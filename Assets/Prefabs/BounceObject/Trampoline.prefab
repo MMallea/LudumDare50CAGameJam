@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7994735482076681990}
   - component: {fileID: 2471892161933064840}
   - component: {fileID: 6855978586731234403}
+  - component: {fileID: 4175097211653082236}
   m_Layer: 0
   m_Name: Trampoline
   m_TagString: Untagged
@@ -32,6 +33,7 @@ Transform:
   m_LocalPosition: {x: -7.42, y: -7.66, z: 6.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3725163772882756426}
   - {fileID: 6697469395563031350}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,8 +61,11 @@ MonoBehaviour:
   collisionType: 0
   destroyOnImpact: 1
   upForce: 200
-  collisionSFX: {fileID: 0}
-  collisionEffectPrefab: {fileID: 0}
+  collisionSFX: {fileID: 8300000, guid: 8f780297889e80f4c8dbebf47293dd55, type: 3}
+  anim: {fileID: 4175097211653082236}
+  scaleCollisionEffectWithObj: 1
+  collisionEffectPrefab: {fileID: 5129541434282560343, guid: cb99df814dd40dc46a32ffc2576766be,
+    type: 3}
 --- !u!54 &7994735482076681990
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104,6 +109,130 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSize: 1
   maxSize: 10
+--- !u!95 &4175097211653082236
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298268412929973499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1b1e2cfc3431294b8bb192085100864, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &3762979364705780897
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2298268412929973503}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3842231582187712054, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd54c49d2af072745927b32737482633, type: 2}
+    - target: {fileID: -1892595765408172718, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e24cf38ee0a99ec43a2fccb2f995dc28, type: 2}
+    - target: {fileID: 919132149155446097, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_Name
+      value: TrampolineModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9d8fef79a76a7e49a99ddc587c3c9ae, type: 3}
+--- !u!4 &3725163772882756426 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9d8fef79a76a7e49a99ddc587c3c9ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 3762979364705780897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6591169320286997725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,7 +243,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 211800f250d294b4585fed0432ee00b9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 211800f250d294b4585fed0432ee00b9,
         type: 3}
@@ -189,7 +318,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 211800f250d294b4585fed0432ee00b9,
         type: 3}
       propertyPath: m_Name
-      value: Model
+      value: CloudModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 211800f250d294b4585fed0432ee00b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 211800f250d294b4585fed0432ee00b9, type: 3}

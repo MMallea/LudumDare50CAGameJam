@@ -50,11 +50,20 @@ public class GameManager : MonoBehaviour
     {
         timer = 0;
         gameRunning = true;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.scream);
     }
     public void EndGame()
     {
         gameRunning = false;
         Time.timeScale = 0;
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.groundHit);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.ouch);
+            SoundManager.Instance.windSource.Stop();
+        }
+
     }
 
     public float GetPlayerHeight()
@@ -81,5 +90,10 @@ public class GameManager : MonoBehaviour
     public float GetTimer()
     {
         return timer;
+    }
+
+    public bool IsGameRunning()
+    {
+        return gameRunning;
     }
 }
