@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour
         resultsUI.SetActive(true);
     }
 
-    public string DisplayTimeMinSecMil(float time)
+    public static string DisplayTimeMinSecMil(float time)
     {
         float minutes = Mathf.Floor(time / 60);
         float seconds = Mathf.Floor(time % 60);

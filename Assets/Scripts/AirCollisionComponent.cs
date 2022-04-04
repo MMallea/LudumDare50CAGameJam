@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AirCollisionComponent : MonoBehaviour
@@ -10,6 +9,7 @@ public class AirCollisionComponent : MonoBehaviour
     public bool destroyOnImpact;
     public int upForce = 1000;
     public AudioClip collisionSFX;
+    public AudioClip painSFX;
     public Animator anim;
     public bool scaleCollisionEffectWithObj;
     public GameObject collisionEffectPrefab;
@@ -37,8 +37,11 @@ public class AirCollisionComponent : MonoBehaviour
             Rigidbody rBody = collision.transform.GetComponent<Rigidbody>();
             rBody.AddForce(Vector3.up * upForce, ForceMode.Impulse);
 
-            if(SoundManager.Instance != null && collisionSFX != null)
-                SoundManager.Instance.PlaySFX(collisionSFX);
+            if(SoundManager.Instance != null && collisionSFX != null && !SoundManager.Instance.sfxSource.isPlaying)
+            {
+                //SoundManager.Instance.PlaySFX(collisionSFX);
+                SoundManager.Instance.PlaySFX(painSFX);
+            }
 
             //Instantiate Effect
             if(collisionEffectObj == null)

@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float timer = 0;
     public Transform playerTransform;
     public Transform groundTransform;
+    public TextMeshProUGUI highscore;
 
     private bool gameRunning;
     private float playerStartHeight = 0;
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerTransform != null)
             playerStartHeight = playerTransform.position.y;
+        highscore.text = "Highscore: " + UIManager.DisplayTimeMinSecMil(PlayerPrefs.GetFloat("Highscore", 0f));
     }
 
     // Update is called once per frame
@@ -54,12 +55,14 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameRunning = false;
-        PlayerPrefs.SetFloat("HighScore", timer);
+        if (timer > PlayerPrefs.GetFloat("Highscore", 0f))
+            PlayerPrefs.SetFloat("Highscore", timer);
+
         Time.timeScale = 0;
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlaySFX(SoundManager.Instance.groundHit);
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.ouch);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.death);
             SoundManager.Instance.windSource.Stop();
         }
 

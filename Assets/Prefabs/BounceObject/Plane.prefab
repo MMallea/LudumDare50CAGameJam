@@ -531,6 +531,7 @@ MonoBehaviour:
   destroyOnImpact: 1
   upForce: 250
   collisionSFX: {fileID: 8300000, guid: 5ff4550bc9613ae4ca8698806a227a48, type: 3}
+  painSFX: {fileID: 8300000, guid: dabe720d3b4b2254a8d8b65534ad707d, type: 3}
   anim: {fileID: 4376877084381846294}
   scaleCollisionEffectWithObj: 0
   collisionEffectPrefab: {fileID: 1892078723244562, guid: 35f240381b6cc4645a31cfdb303a9646,

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -21,7 +20,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip ahhh;
     public AudioClip scream;
-    public AudioClip ouch;
+    public AudioClip death;
     public AudioClip groundHit;
     public AudioClip startGame;
     public AudioClip altBeep;
