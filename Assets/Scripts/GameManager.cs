@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameRunning)
+        if (gameRunning)
         {
             timer += Time.deltaTime;
         }
@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameRunning = false;
+        PlayerPrefs.SetFloat("HighScore", timer);
         Time.timeScale = 0;
         if (SoundManager.Instance != null)
         {
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
         if (playerTransform != null)
             return playerTransform.position.y;
 
-            return 0;
+        return 0;
     }
 
     public float GetPlayerStartHeight()

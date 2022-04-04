@@ -4145,7 +4145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -360.2, y: -120.600006}
+  m_AnchoredPosition: {x: -360.2, y: -63.1}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751220880
@@ -4177,7 +4177,9 @@ MonoBehaviour:
     Wayne
     James - Art
 
-    Nick O''Connell - Design'
+    Nick O''Connell - Design
+
+    Dave Panfilo - "Falling Man"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad9bc2ddefdf5c844a8d24ac3eeb2e14, type: 2}
   m_sharedMaterial: {fileID: 4791746746924430188, guid: ad9bc2ddefdf5c844a8d24ac3eeb2e14,
@@ -4241,7 +4243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -3.6959991, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4706,7 +4708,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -4731,8 +4733,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.6585216, y: -0.0010150438, z: 0.0008919023, w: 0.7525606}
+  m_LocalPosition: {x: -7.444, y: 3.3599973, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9187,7 +9189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042003165}
-  m_LocalRotation: {x: 0.6585084, y: -0.0010108479, z: 0.0008881687, w: 0.7525722}
+  m_LocalRotation: {x: 0.6585216, y: -0.0010150438, z: 0.0008919023, w: 0.7525606}
   m_LocalPosition: {x: -7.444, y: 3.3599973, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
