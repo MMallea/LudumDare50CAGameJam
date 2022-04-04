@@ -37,9 +37,9 @@ public class AirCollisionComponent : MonoBehaviour
             Rigidbody rBody = collision.transform.GetComponent<Rigidbody>();
             rBody.AddForce(Vector3.up * upForce, ForceMode.Impulse);
 
-            if(SoundManager.Instance != null && collisionSFX != null && !SoundManager.Instance.sfxSource.isPlaying)
+            if(SoundManager.Instance != null && collisionSFX != null)
             {
-                //SoundManager.Instance.PlaySFX(collisionSFX);
+                SoundManager.Instance.PlaySFX(collisionSFX);
                 SoundManager.Instance.PlaySFX(painSFX);
             }
 
