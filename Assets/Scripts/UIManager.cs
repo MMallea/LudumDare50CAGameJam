@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
 
         //Start game frozen
         Time.timeScale = 0;
+        ShowMenuUI();
     }
 
     // Update is called once per frame
