@@ -31,6 +31,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource windSource;
 
+    private IEnumerator altIntervalCoroutine;
+
     public void PlayMusic(AudioClip clip, bool loop)
     {
         musicSource.loop = loop;
@@ -41,5 +43,34 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlaySFX(AudioClip clip, float volume)
+    {
+        sfxSource.PlayOneShot(clip, volume);
+    }
+
+    public void RunPlayAltInterval()
+    {
+        if (altIntervalCoroutine == null)
+        {
+            altIntervalCoroutine = PlayAltPerInterval();
+            StartCoroutine(altIntervalCoroutine);
+        }
+    }
+
+    private IEnumerator PlayAltPerInterval()
+    {
+        if (GameManager.Instance == null)
+            yield break;
+
+        while (GameManager.Instance.IsGameRunning())
+        {
+            yield return new WaitForSeconds(GameManager.Instance.GetPlayerToGroundPerc() * 2.5f);
+
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.altBeep, 0.25f);
+        }
+
+        altIntervalCoroutine = null;
     }
 }

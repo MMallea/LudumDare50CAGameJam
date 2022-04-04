@@ -32,8 +32,6 @@ public class GameManager : MonoBehaviour
     {
         if (playerTransform != null)
             playerStartHeight = playerTransform.position.y;
-
-        StartGame();
     }
 
     // Update is called once per frame
@@ -90,6 +88,11 @@ public class GameManager : MonoBehaviour
     public float GetTimer()
     {
         return timer;
+    }
+
+    public float GetPlayerToGroundPerc()
+    {
+        return (groundTransform.position.y - playerTransform.position.y) / (groundTransform.position.y - playerStartHeight);
     }
 
     public bool IsGameRunning()

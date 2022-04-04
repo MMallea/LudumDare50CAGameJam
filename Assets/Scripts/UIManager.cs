@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Gameplay UI")]
     public Image altPlayerPosImage;
-    public Image altGroundPosImage;
+    public TMPro.TextMeshProUGUI altGroundPosText;
     public Image altVBar;
 
     public TextMeshProUGUI timerText;
@@ -37,21 +37,19 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI resultsTimerText;
 
     [Header("UI Pages")]
+    public GameObject menuUI;
     public GameObject gameplayUI;
     public GameObject resultsUI;
 
-    public Transform playerTransform;
-    public Transform groundTransform;
-    private float altInterval;
-    private float playerPosStartY;
     private float playerPosImgStartY;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerPosStartY = playerTransform.position.y;
         playerPosImgStartY = altPlayerPosImage.rectTransform.position.y;
-        StartCoroutine(PlayAltPerInterval());
+
+        //Start game frozen
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -67,32 +65,54 @@ public class UIManager : MonoBehaviour
                 }
                 break;
             case CurrentUIPage.Menu:
-
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    Time.timeScale = 1;
+                    if (GameManager.Instance != null)
+                        GameManager.Instance.StartGame();
+                    ShowGameplayUI();
+                    if (SoundManager.Instance != null)
+                        SoundManager.Instance.RunPlayAltInterval();
+                }
                 break;
             default:
                 break;
         }
 
-        if (timerText != null && GameManager.Instance != null)
-            timerText.text = DisplayTimeMinSecMil(GameManager.Instance.GetTimer());
+        //End game input
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
-        //Move player image pos closer to ground
-        float playerToGroundPerc = (groundTransform.position.y - playerTransform.position.y) / (groundTransform.position.y - playerPosStartY);
-        playerToGroundPerc -= 0.025f;
+        if (timerText != null && GameManager.Instance != null)
+        timerText.text = DisplayTimeMinSecMil(GameManager.Instance.GetTimer());
+
+        //Move player image pos closer to ground;
+        float playerToGroundPerc = GameManager.Instance.GetPlayerToGroundPerc() - 0.025f;
         if (playerToGroundPerc < 0)
             playerToGroundPerc = 0;
 
-        altInterval = playerToGroundPerc;
-
-        float newPlayerPosY = playerPosImgStartY + ((altGroundPosImage.rectTransform.position.y - playerPosImgStartY) * (1 -playerToGroundPerc));
+        float newPlayerPosY = playerPosImgStartY + ((altGroundPosText.rectTransform.position.y - playerPosImgStartY) * (1 -playerToGroundPerc));
 
         altPlayerPosImage.rectTransform.position = new Vector3(altPlayerPosImage.rectTransform.position.x, newPlayerPosY, altPlayerPosImage.rectTransform.position.z);
+
+    }
+
+    public void ShowMenuUI()
+    {
+        currentUIPage = CurrentUIPage.Menu;
+
+        menuUI.SetActive(true);
+        gameplayUI.SetActive(false);
+        resultsUI.SetActive(false);
     }
 
     public void ShowGameplayUI()
     {
         currentUIPage = CurrentUIPage.Gameplay;
 
+        menuUI.SetActive(false);
         gameplayUI.SetActive(true);
         resultsUI.SetActive(false);
     }
@@ -104,22 +124,9 @@ public class UIManager : MonoBehaviour
         if (resultsTimerText != null && GameManager.Instance != null)
             resultsTimerText.text = DisplayTimeMinSecMil(GameManager.Instance.GetTimer());
 
+        menuUI.SetActive(false);
         gameplayUI.SetActive(false);
         resultsUI.SetActive(true);
-    }
-
-    private IEnumerator PlayAltPerInterval()
-    {
-        if (GameManager.Instance == null || SoundManager.Instance == null)
-            yield break;
-
-        while(GameManager.Instance.IsGameRunning())
-        {
-            yield return new WaitForSeconds(altInterval * 1.5f);
-
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.altBeep);
-        }
-
     }
 
     public string DisplayTimeMinSecMil(float time)
