@@ -23,21 +23,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public enum CurrentUIPage { Gameplay, Results, Menu }
+    public enum CurrentUIPage { Gameplay, Results, Menu, Credits, HowToPlay }
     public CurrentUIPage currentUIPage;
 
     [Header("Gameplay UI")]
     public Image altPlayerPosImage;
     public TMPro.TextMeshProUGUI altGroundPosText;
-    public Image altVBar;
+    public Image altVBar, altVMeter;
 
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText, highscore;
 
     [Header("Results UI")]
     public TextMeshProUGUI resultsTimerText;
 
     [Header("UI Pages")]
     public GameObject menuUI;
+    public GameObject creditsUI;
+    public GameObject tutorialUI;
     public GameObject gameplayUI;
     public GameObject resultsUI;
 
@@ -47,6 +49,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         playerPosImgStartY = altPlayerPosImage.rectTransform.position.y;
+        highscore.text = $"{UIManager.DisplayTimeMinSecMil(PlayerPrefs.GetFloat("Highscore", 0f))}";
+        altVMeter.fillAmount = 1f;
 
         //Start game frozen
         Time.timeScale = 0;
@@ -66,7 +70,7 @@ public class UIManager : MonoBehaviour
                 }
                 break;
             case CurrentUIPage.Menu:
-                if(Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     Time.timeScale = 1;
                     if (GameManager.Instance != null)
@@ -75,6 +79,18 @@ public class UIManager : MonoBehaviour
                     if (SoundManager.Instance != null)
                         SoundManager.Instance.RunPlayAltInterval();
                 }
+                else if (Input.GetKeyDown(KeyCode.C))
+                    ShowCreditsUI();
+                else if (Input.GetKeyDown(KeyCode.O))
+                    ShowTutorialUI();
+                    break;
+            case CurrentUIPage.Credits:
+                if (Input.GetKeyDown(KeyCode.Backspace))
+                    ShowMenuUI();
+                break;
+            case CurrentUIPage.HowToPlay:
+                if (Input.GetKeyDown(KeyCode.Backspace))
+                    ShowMenuUI();
                 break;
             default:
                 break;
@@ -87,17 +103,17 @@ public class UIManager : MonoBehaviour
         }
 
         if (timerText != null && GameManager.Instance != null)
-        timerText.text = DisplayTimeMinSecMil(GameManager.Instance.GetTimer());
+            timerText.text = DisplayTimeMinSecMil(GameManager.Instance.GetTimer());
 
         //Move player image pos closer to ground;
         float playerToGroundPerc = GameManager.Instance.GetPlayerToGroundPerc() - 0.025f;
         if (playerToGroundPerc < 0)
             playerToGroundPerc = 0;
 
-        float newPlayerPosY = playerPosImgStartY + ((altGroundPosText.rectTransform.position.y - playerPosImgStartY) * (1 -playerToGroundPerc));
+        float newPlayerPosY = playerPosImgStartY + ((altGroundPosText.rectTransform.position.y - playerPosImgStartY) * (1 - playerToGroundPerc));
 
         altPlayerPosImage.rectTransform.position = new Vector3(altPlayerPosImage.rectTransform.position.x, newPlayerPosY, altPlayerPosImage.rectTransform.position.z);
-
+        //altVMeter.fillAmount = (0.05f * altPlayerPosImage.rectTransform.position.y) * Time.deltaTime;
     }
 
     public void ShowMenuUI()
@@ -105,6 +121,36 @@ public class UIManager : MonoBehaviour
         currentUIPage = CurrentUIPage.Menu;
 
         menuUI.SetActive(true);
+        creditsUI.SetActive(false);
+        tutorialUI.SetActive(false);
+        gameplayUI.SetActive(false);
+        resultsUI.SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            ShowCreditsUI();
+    }
+
+    public void ShowCreditsUI()
+    {
+        currentUIPage = CurrentUIPage.Credits;
+
+        creditsUI.SetActive(true);
+        menuUI.SetActive(false);
+        tutorialUI.SetActive(false);
+        gameplayUI.SetActive(false);
+        resultsUI.SetActive(false);
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //ShowMenuUI();
+    }
+
+    public void ShowTutorialUI()
+    {
+        currentUIPage = CurrentUIPage.HowToPlay;
+
+        tutorialUI.SetActive(true);
+        menuUI.SetActive(false);
+        creditsUI.SetActive(false);
         gameplayUI.SetActive(false);
         resultsUI.SetActive(false);
     }
@@ -114,6 +160,8 @@ public class UIManager : MonoBehaviour
         currentUIPage = CurrentUIPage.Gameplay;
 
         menuUI.SetActive(false);
+        creditsUI.SetActive(false);
+        tutorialUI.SetActive(false);
         gameplayUI.SetActive(true);
         resultsUI.SetActive(false);
     }
@@ -126,6 +174,8 @@ public class UIManager : MonoBehaviour
             resultsTimerText.text = DisplayTimeMinSecMil(GameManager.Instance.GetTimer());
 
         menuUI.SetActive(false);
+        creditsUI.SetActive(false);
+        tutorialUI.SetActive(false);
         gameplayUI.SetActive(false);
         resultsUI.SetActive(true);
     }

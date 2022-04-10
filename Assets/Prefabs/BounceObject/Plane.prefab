@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randDir: 1
-  speedMultiplierRange: {x: 0.1, y: 1}
+  speedMultiplierRange: {x: 0.1, y: 0.5}
   velocity: {x: 0, y: 0, z: 0}
   modelFaceTowardsDir: 1
   modelObj: {fileID: 8663875764598217355}

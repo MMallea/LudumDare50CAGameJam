@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: bc88072179b3da1439ac1efd1d1d880c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Wida Round Light Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a97f00325c9b0254394d3d270f9d1772, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
