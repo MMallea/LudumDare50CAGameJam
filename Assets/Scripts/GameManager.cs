@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,10 +23,13 @@ public class GameManager : MonoBehaviour
     public float timer = 0;
     public Transform playerTransform;
     public Transform groundTransform;
+    public GameObject characterWrapperObj;
     public TextMeshProUGUI highscore;
 
     private bool gameRunning;
     private float playerStartHeight = 0;
+    private float rumbleTime;
+    private float rumbleSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,14 @@ public class GameManager : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
+
+        if(rumbleTime > 0)
+        {
+            Gamepad.current.SetMotorSpeeds(rumbleSpeed, rumbleSpeed);
+            rumbleTime -= Time.unscaledDeltaTime;
+            if (rumbleTime <= 0)
+                Gamepad.current.SetMotorSpeeds(0, 0);
+        }
     }
 
 
@@ -49,6 +61,9 @@ public class GameManager : MonoBehaviour
     {
         timer = 0;
         gameRunning = true;
+        if (characterWrapperObj != null)
+            characterWrapperObj.SetActive(true);
+
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX(SoundManager.Instance.scream);
     }
@@ -66,6 +81,7 @@ public class GameManager : MonoBehaviour
             SoundManager.Instance.windSource.Stop();
         }
 
+        SetRumble(1f, 1f);
     }
 
     public float GetPlayerHeight()
@@ -102,5 +118,16 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning()
     {
         return gameRunning;
+    }
+
+    public void SetRumble(float time, float speed)
+    {
+        rumbleTime = time;
+        rumbleSpeed = speed;
+    }
+
+    public bool IsRumbling()
+    {
+        return rumbleTime > 0;
     }
 }

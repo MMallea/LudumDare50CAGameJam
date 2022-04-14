@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -71,6 +72,9 @@ public class PlayerController : MonoBehaviour
         }
 
         speedMultiplier = space ? 0.5f : 1;
+        if(space && GameManager.Instance != null && !GameManager.Instance.IsRumbling())
+            GameManager.Instance.SetRumble(0.25f, 0.025f);
+
         if (SoundManager.Instance != null)
             SoundManager.Instance.windSource.volume = space ? 0.5f : 0.25f;
     }

@@ -14,10 +14,9 @@ public class OnHeightTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player = GameObject.Find("PlayerHips");
-        if(player != null)
+        if(GameManager.Instance.playerTransform != null)
         {
-            playerTransform = player.transform;
+            playerTransform = GameManager.Instance.playerTransform;
         }
     }
 

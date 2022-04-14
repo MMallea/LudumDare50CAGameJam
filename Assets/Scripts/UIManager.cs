@@ -63,14 +63,14 @@ public class UIManager : MonoBehaviour
         switch (currentUIPage)
         {
             case CurrentUIPage.Results:
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.JoystickButton9))
                 {
                     Time.timeScale = 1;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
                 break;
             case CurrentUIPage.Menu:
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.JoystickButton9))
                 {
                     Time.timeScale = 1;
                     if (GameManager.Instance != null)
@@ -100,6 +100,13 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+
+        //Reset save data
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if (timerText != null && GameManager.Instance != null)

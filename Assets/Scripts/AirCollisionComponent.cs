@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AirCollisionComponent : MonoBehaviour
 {
@@ -13,18 +14,17 @@ public class AirCollisionComponent : MonoBehaviour
     public Animator anim;
     public bool scaleCollisionEffectWithObj;
     public GameObject collisionEffectPrefab;
+
     private GameObject collisionEffectObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -65,6 +65,8 @@ public class AirCollisionComponent : MonoBehaviour
                 destroyOnImpact = false;
                 StartCoroutine(Despawn());
             }
+            if (GameManager.Instance != null)
+                GameManager.Instance.SetRumble(0.25f, 0.25f);
         }
     }
 
