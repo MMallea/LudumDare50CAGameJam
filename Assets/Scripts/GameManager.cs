@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using System;
+using System.Text;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     private float playerStartHeight = 0;
     private float rumbleTime;
     private float rumbleSpeed;
+    private Discord.Discord discord;
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +52,14 @@ public class GameManager : MonoBehaviour
 
         if(rumbleTime > 0)
         {
-            Gamepad.current.SetMotorSpeeds(rumbleSpeed, rumbleSpeed);
+            if(Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(rumbleSpeed, rumbleSpeed);
+
             rumbleTime -= Time.unscaledDeltaTime;
-            if (rumbleTime <= 0)
+            if (Gamepad.current != null && rumbleTime <= 0)
                 Gamepad.current.SetMotorSpeeds(0, 0);
         }
+
     }
 
 
