@@ -11,6 +11,6 @@ public class RandomizeSize : MonoBehaviour
     void Start()
     {
         float size = Random.Range(minSize, maxSize);
-        gameObject.transform.localScale = new Vector3(size, size, size);
+        gameObject.transform.localScale = Vector3.one * size;
     }
 }

@@ -768,6 +768,7 @@ MonoBehaviour:
   nameText: {fileID: 1693531322}
   dateText: {fileID: 360117232}
   messageText: {fileID: 1168493808}
+  emojiSFX: {fileID: 8300000, guid: e5b2f15857a4347479f812d5099cb1ba, type: 3}
   bubbleTransform: {fileID: 0}
   bubbleCollider: {fileID: 0}
   chatContentTransfom: {fileID: 0}

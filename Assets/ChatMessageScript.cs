@@ -9,6 +9,7 @@ public class ChatMessageScript : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dateText;
     public TMP_Text messageText;
+    public AudioClip emojiSFX;
 
     [Header("Chat Bubble References")]
     public Transform bubbleTransform;
@@ -31,16 +32,25 @@ public class ChatMessageScript : MonoBehaviour
                 chatMessage.onAvatarSet = SetProfileImage;
 
                 //Update bounce with emojis
-                int reactions = chatMessage.reactions.Length;
-                if (reactions > 0 && chatMessage.reactions[0] != "[]" && GetComponent<AirCollisionComponent>())
+                int reactionsAmnt = chatMessage.reactions.Length;
+                if (reactionsAmnt > 0 && chatMessage.reactions[0] != "[]" && GetComponent<AirCollisionComponent>())
                 {
+                    int maxReactionMultiplier = Mathf.Clamp(reactionsAmnt, 0, 15);
                     AirCollisionComponent airCollisionComponent = GetComponent<AirCollisionComponent>();
-                    airCollisionComponent.upForce += Mathf.Clamp(reactions, 0, 20) * 50;
+                    //Update upforce
+                    airCollisionComponent.upForce += maxReactionMultiplier * 25;
+                    airCollisionComponent.collisionSFX = emojiSFX;
+
+                    //Make sure size is equal or greater to emoji max
+                    float minSize = (float)maxReactionMultiplier * 0.5f;
+                    if (gameObject.transform.localScale.x < minSize)
+                        gameObject.transform.localScale = Vector3.one * minSize;
+
                     airCollisionComponent.onCollided += () =>
                     {
                         if (GameManager.Instance.playerParticles != null)
                         {
-                            GameManager.Instance.playerParticles.Emit(reactions);
+                            GameManager.Instance.playerParticles.Emit(reactionsAmnt);
                         }
                     };
                 }
