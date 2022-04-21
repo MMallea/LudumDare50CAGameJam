@@ -79,7 +79,7 @@ public class ChatManager : MonoBehaviour
         string[] records = data.Split('\n');
         foreach (string record in records)
         {
-            string[] fields = record.Split(',');
+            string[] fields = record.Split('|');
             if (fields.Length >= 5)
             {
                 ChatMessage chatMessage = new ChatMessage(fields[0], fields[1], fields[2], fields[3]);

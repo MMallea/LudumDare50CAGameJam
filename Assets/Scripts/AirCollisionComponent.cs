@@ -15,6 +15,9 @@ public class AirCollisionComponent : MonoBehaviour
     public bool scaleCollisionEffectWithObj;
     public GameObject collisionEffectPrefab;
 
+    public delegate void OnCollided();
+    public OnCollided onCollided;
+
     private GameObject collisionEffectObj;
 
     // Start is called before the first frame update
@@ -67,6 +70,8 @@ public class AirCollisionComponent : MonoBehaviour
             }
             if (GameManager.Instance != null)
                 GameManager.Instance.SetRumble(0.25f, 0.25f);
+
+            onCollided?.Invoke();
         }
     }
 

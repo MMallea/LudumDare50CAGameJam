@@ -556,18 +556,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762504689}
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: -0.00000008940697}
-  m_LocalPosition: {x: 0, y: 0, z: 0.011899993}
-  m_LocalScale: {x: 0.002363714, y: 0.0023637146, z: 0.0023637146}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 1.3840256}
+  m_LocalScale: {x: 0.100351, y: 0.100351, z: 0.100351}
   m_Children:
   - {fileID: 1693531321}
   - {fileID: 1168493807}
-  m_Father: {fileID: 7235291509017379790}
-  m_RootOrder: 0
+  m_Father: {fileID: 7238269926524695400}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.03640008, y: -0.032599997}
+  m_AnchoredPosition: {x: -1.545358, y: 0.4652118}
   m_SizeDelta: {x: 1, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1762504691
@@ -657,6 +657,7 @@ Transform:
   m_Children:
   - {fileID: 5198533181778693341}
   - {fileID: 7235291509017379790}
+  - {fileID: 1762504690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -716,8 +717,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.154554, y: 0.92981625, z: 4.130412}
-  m_Center: {x: -0.077083826, y: 0.0061507225, z: -0.042363644}
+  m_Size: {x: 4.053825, y: 0.92981625, z: 4.130412}
+  m_Center: {x: -0.026719332, y: 0.0061507225, z: -0.042363644}
 --- !u!114 &2644671703725665268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +768,9 @@ MonoBehaviour:
   nameText: {fileID: 1693531322}
   dateText: {fileID: 360117232}
   messageText: {fileID: 1168493808}
+  bubbleTransform: {fileID: 0}
+  bubbleCollider: {fileID: 0}
+  chatContentTransfom: {fileID: 0}
 --- !u!1001 &5741631164842339126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -902,7 +906,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a63353678bfca634da8f1882178633b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a63353678bfca634da8f1882178633b0,
         type: 3}
@@ -958,6 +962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rounded_square
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a63353678bfca634da8f1882178633b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a63353678bfca634da8f1882178633b0, type: 3}

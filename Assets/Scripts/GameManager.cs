@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public float timer = 0;
     public Transform playerTransform;
     public Transform groundTransform;
+    public ParticleSystem playerParticles;
     public GameObject characterWrapperObj;
     public TextMeshProUGUI highscore;
 
@@ -32,7 +33,6 @@ public class GameManager : MonoBehaviour
     private float playerStartHeight = 0;
     private float rumbleTime;
     private float rumbleSpeed;
-    private Discord.Discord discord;
 
     // Start is called before the first frame update
     void Start()
