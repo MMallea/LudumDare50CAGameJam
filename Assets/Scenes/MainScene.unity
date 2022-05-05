@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37267506, g: 0.6103284, b: 0.8626851, a: 1}
+  m_IndirectSpecularColor: {r: 0.37335643, g: 0.6107974, b: 0.8625705, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3038,7 +3038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ahhh: {fileID: 8300000, guid: ae2a8ccaf482710419b8b41963939b9b, type: 3}
   scream: {fileID: 8300000, guid: 07fcea697f463c048a05e325df233d48, type: 3}
-  death: {fileID: 8300000, guid: e40fef4604e6ef94d8e1a86f29c72b98, type: 3}
+  death: {fileID: 8300000, guid: dabe720d3b4b2254a8d8b65534ad707d, type: 3}
   groundHit: {fileID: 8300000, guid: 9902a6050685ea6449997f23394af0b9, type: 3}
   startGame: {fileID: 8300000, guid: d9a9cd3a11d085c4091510c1a6626570, type: 3}
   altBeep: {fileID: 8300000, guid: 412f59cff4affb047b059a93cb7136d1, type: 3}
@@ -5521,7 +5521,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -5546,8 +5546,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.65851396, y: -0.0011170694, z: 0.0009821069, w: 0.7525671}
+  m_LocalPosition: {x: -7.444, y: 3.3599973, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16036,7 +16036,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042003165}
-  m_LocalRotation: {x: 0.6585133, y: -0.0010145885, z: 0.00089243264, w: 0.7525679}
+  m_LocalRotation: {x: 0.65851396, y: -0.0011170694, z: 0.0009821069, w: 0.7525671}
   m_LocalPosition: {x: -7.444, y: 3.3599973, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
